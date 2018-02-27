@@ -46,13 +46,13 @@ public class ExceptionsExercise {
     try{
         validateAge(17);
     } catch (AgeValidationException AVE){
-        System.out.println("Wrong age");
+        AVE.printStackTrace();
     }
 
     try{
         validateName("Bo");
     } catch (NameValidationException NVE){
-        System.out.println("Wrong name");
+      NVE.printStackTrace();
     }
 
     }
