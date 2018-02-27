@@ -1,39 +1,70 @@
 // Exercise 1
 /** Exception Exercise file Start */
-public class ExceptionsExercise
-{
-    public static void main(String[] args)
-    {
+public class ExceptionsExercise {
+    public static void main(String[] args) {
         //Unchecked exception / runtime exception
         //Checked exceptions
         /*
         Catch the exceptions and be specific
          */
-        testException();
+        try {
+            testException();
+            Thread.sleep(1000);
+        } catch (InterruptedException eIE) {
+            eIE.printStackTrace();
+            System.out.println("Interrupted exception");
+        }
 
-        Thread.sleep(1000);
 
         //Nested catch
-        String[] strings =  {"første string på plads 0", "anden string på plads 1"};
+        try {
+            Thread.sleep(1000);
 
-        System.out.println(strings[2]);
-        Thread.sleep(1000);
+        } catch (InterruptedException eIE) {
+            eIE.printStackTrace();
+        }
+        try{
+            String[] strings = {"første string på plads 0", "anden string på plads 1"};
+            System.out.println(strings[2]);
+        } catch (IndexOutOfBoundsException iOOBE){
+            System.out.println("Ikke noget på den plads");
+        }
+
 
         System.out.println("Hej");
-
+    try{
         int a = 10;
         int b = 0;
-        double result = a/b;
+        double result = a / b;
+    } catch (ArithmeticException aEE) {
+        System.out.println("divided by z3r0");
+        aEE.printStackTrace();
 
+    }
+
+
+    try{
         validateAge(17);
+    } catch (AgeValidationException AVE){
+        System.out.println("Wrong age");
+    }
+
+    try{
         validateName("Bo");
+    } catch (NameValidationException NVE){
+        System.out.println("Wrong name");
+    }
 
     }
 
     public static void testException() throws InterruptedException
     {
-        String[] strings = {"første string på plads 0", "anden string på plads 1"};
-        System.out.println(strings[2]);
+        try {
+            String[] strings = {"første string på plads 0", "anden string på plads 1"};
+            System.out.println(strings[2]);
+        } catch (IndexOutOfBoundsException iOOBE){
+            System.out.println("Der er intet på den plads");
+        }
     }
 
     public static void validateAge(int age) throws AgeValidationException
@@ -60,5 +91,5 @@ public class ExceptionsExercise
 
 // Exercise 2
     //Create your own exception it could be Gender-/Age-/-Name-Exception.
-        extend exception and override the printStackTrace() method
-        catch the Exception and print the message you created!?!
+        //extend exception and override the printStackTrace() method
+        //catch the Exception and print the message you created!?!
